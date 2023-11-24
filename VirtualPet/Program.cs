@@ -2,57 +2,57 @@
 
 class VirtualPet
 {
-    public string petName { get; private set; }
+    public string PetName { get; private set; }
     public int Hunger { get; private set; }
     public int Happiness { get; private set; }
-    public bool needsBathroom { get; private set; }
-    public int age { get; private set; }  // what is the point of this value??
+    public bool NeedsBathroom { get; private set; }
+    public int Age { get; private set; }  // what is the point of this value??
 
     public VirtualPet(string petName = "Pikachu", int hunger = 50, int happiness = 50, bool needsBathroom = false, int age = 30)
     {
-        this.petName = petName;
+        PetName = petName;
         Hunger = hunger;
         Happiness = happiness;
-        this.needsBathroom = needsBathroom;
-        this.age = age;
+        NeedsBathroom = needsBathroom;
+        Age = age;
     }
 
-    public void feedPet()
+    public void FeedPet()
     {
-        Console.WriteLine($"{petName} er mett og fornøyd");
+        Console.WriteLine($"{PetName} er mett og fornøyd");
         Hunger -= 10;
     }
 
-    public void cuddlePet()
+    public void CuddlePet()
     {
-        Console.WriteLine($"{petName} smiler");
+        Console.WriteLine($"{PetName} smiler");
         Happiness += 10;
     }
 
-    public void doBathroomCheck()
+    public void DoBathroomCheck()
     {
-        Console.WriteLine($"Sjekker om {petName} må på do.");
-        checkBathroom();
+        Console.WriteLine($"Sjekker om {PetName} må på do.");
+        CheckBathroom();
 
-        if ( needsBathroom )
+        if ( NeedsBathroom )
         {
-            Console.WriteLine($"{petName} må på do.");
+            Console.WriteLine($"{PetName} må på do.");
             Hunger = 50;
-            needsBathroom = false;
+            NeedsBathroom = false;
         }
         else
         {
-            Console.WriteLine($"{petName} må ikke på do.");
+            Console.WriteLine($"{PetName} må ikke på do.");
         }
     }
 
-    public void checkBathroom()
+    public void CheckBathroom()
     {
-        needsBathroom = false;
+        NeedsBathroom = false;
 
         if (Hunger < 40)
         {
-            needsBathroom = true;
+            NeedsBathroom = true;
         }
     }
 }
@@ -70,9 +70,9 @@ class Program
 
         while (!exitApp)
         {
-            Console.WriteLine($"1. Gi {chosenPet.petName} mat");
-            Console.WriteLine($"2. Kos med {chosenPet.petName}");
-            Console.WriteLine($"3. Sjekk om {chosenPet.petName} må på do");
+            Console.WriteLine($"1. Gi {chosenPet.PetName} mat");
+            Console.WriteLine($"2. Kos med {chosenPet.PetName}");
+            Console.WriteLine($"3. Sjekk om {chosenPet.PetName} må på do");
             Console.WriteLine("4. Exit");
 
             string choice = Console.ReadLine();
@@ -80,13 +80,13 @@ class Program
             switch ( choice )
             {
                 case "1":
-                    chosenPet.feedPet();
+                    chosenPet.FeedPet();
                     break;
                 case "2":
-                    chosenPet.cuddlePet();
+                    chosenPet.CuddlePet();
                     break;
                 case "3":
-                    chosenPet.doBathroomCheck();
+                    chosenPet.DoBathroomCheck();
                     break;
                 case "4":
                     exitApp = true;
